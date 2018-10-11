@@ -11,4 +11,7 @@ ____
 Запуск:
 ```
  java -jar mywebapp-0.0.1-SNAPSHOT-war-exec.jar 
+
+веб-браузер http://localhost:8080/mywebapp/index.zul
 ```
+
