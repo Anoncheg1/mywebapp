@@ -1,0 +1,61 @@
+<zk>
+	<window apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm')@init('com.foo.mywebapp.MyViewModel')"
+	validationMessages="@id('vmsgs')">
+	
+	<grid model="@load(vm.contacts)">
+		<columns>
+			<column label="ФИО" />
+			<column label="Дата рождения" />
+			<column label="Телефон" />
+			<column label="Адрес" />
+			<column label="" />
+			<column label="" />
+		</columns>
+		<rows>
+			<template name="model" var="item">
+				<row>
+					<!-- <label value="@load(item.id)" />-->
+					<textbox inplace="true" value="@load(item.fio)" />
+					<datebox value="@load(item.birthday)" />
+					<label value="@load(item.phone)" />
+					<label value="@load(item.address)" />
+					<button label="Сохранить" onClick="@command('update', item=item)" />
+					<button label="Удалить" onClick="@command('delete', id=item.id, fio=item.fio)" />
+				</row>
+			</template>
+		</rows>
+	</grid>
+	<grid form="@id('fx') @load(vm.newcontact, after='insert') @save(vm.newcontact, before='insert')">
+		<rows>			
+				<row>
+				    <textbox value="@bind(fx.fio)"/>
+				    <datebox value="@bind(fx.birthday)"/>
+				    <textbox value="@bind(fx.phone)"/>
+				    <textbox value="@bind(fx.address)"/>
+				    <button label="Добавить" onClick="@command('insert')" />
+				</row>
+		</rows>
+	</grid>
+		<!--<listbox model="@load(vm.contacts)"
+			selectedIndex="@bind(vm.selectedIndex)">
+			<listhead>
+			<listheader label="id" />
+				<listheader label="ФИО" />
+				<listheader label="Дата рождения" />
+				<listheader label="телефон" width="20%" />
+				<listheader label="адрес" width="20%" />
+			</listhead>
+
+			<template name="model" var="item">
+				<listitem>
+				<listcell label="@load(item.id)" />
+					<listcell label="@load(item.fio)" />
+					<listcell label="@load(item.birthday)" />
+					<listcell label="@load(item.phone)" />
+					<listcell label="@load(item.adress)" />
+				</listitem>
+			</template>
+		</listbox>-->
+	</window>
+</zk>
