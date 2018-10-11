@@ -9,6 +9,6 @@ ____
 - embedded Tomcat для запуска war файла.
 
 Запуск:
-'''
+```
  java -jar mywebapp-0.0.1-SNAPSHOT-war-exec.jar 
-'''
+```
